@@ -1,0 +1,64 @@
+@server = http://localhost:4004
+@auth = Authorization: Basic alice:
+
+
+### PurchaseOrders
+# @name PurchaseOrders_GET
+GET {{server}}/odata/v4/purchase-order/PurchaseOrders
+{{auth}}
+
+
+### Modifications
+# @name Modifications_GET
+GET {{server}}/odata/v4/purchase-order/Modifications
+{{auth}}
+
+### Modifications
+# @name Modifications_GET
+GET {{server}}/odata/v4/purchase-order/PurchaseOrders(ID=1225449c-33b6-426a-b96f-e06509db0aa2)?$expand=allowances,charges
+{{auth}}
+
+
+### Modifications
+# @name Modifications_GET
+GET {{server}}/odata/v4/purchase-order/PurchaseOrders(ID=1225449c-33b6-426a-b96f-e06509db0aa2)?$expand=allowances
+{{auth}}
+
+
+### Modifications
+# @name Modifications_POST
+POST {{server}}/odata/v4/purchase-order/Modifications
+Content-Type: application/json
+{{auth}}
+
+{
+  "ID": "5993867d-4ba1-42b2-a453-6eae1a26cb7a",
+  "percentage": 99,
+  "isDeduction": false,
+  "purchaseOrder": {
+    "ID": "1225449c-33b6-426a-b96f-e06509db0aa2"
+  }
+}
+
+
+### Modifications
+# @name Modifications_PATCH
+PATCH {{server}}/odata/v4/purchase-order/Modifications/5993867d-4ba1-42b2-a453-6eae1a26cb7a
+Content-Type: application/json
+{{auth}}
+
+{
+  "ID": "5993867d-4ba1-42b2-a453-6eae1a26cb7a",
+  "percentage": 99,
+  "isDeduction": false,
+  "purchaseOrder": {
+    "ID": "1225449c-33b6-426a-b96f-e06509db0aa2"
+  }
+}
+
+
+### Modifications
+# @name Modifications_DELETE
+DELETE {{server}}/odata/v4/purchase-order/Modifications/5993867d-4ba1-42b2-a453-6eae1a26cb7a
+Content-Type: application/json
+{{auth}}
